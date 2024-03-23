@@ -63,7 +63,7 @@ public class UserController {
     @DeleteMapping("/deleteUser")
     public ResponseEntity<CommonResponse> deleteUser(@RequestParam(name="userId") String userId){
     	if(userService.deleteUser(userId))
-    		return ResponseEntity.status(HttpStatus.OK).body(new CommonResponse("200","User deleted successfully."));
+    		return ResponseEntity.status(HttpStatus.OK).body(new CommonResponse("200","User deleted successfully deleted."));
     	
 	   return ResponseEntity.status(HttpStatus.OK).body(new CommonResponse("200","Unable to delete user details"));
     }
