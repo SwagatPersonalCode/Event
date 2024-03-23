@@ -45,7 +45,7 @@ public class UserController {
 		return userService.fetchAllUsers();
     }
     
-    @GetMapping("/allUsers/{userId}")
+    @GetMapping("/fetchUserDetails")
     public User fetchUserDetails(@RequestParam(name="userId") String userId){
 		return userService.fetchUserDetailsBasedOnId(userId);	
     }
