@@ -15,6 +15,7 @@ public class EventController {
 
 	@Autowired
 	private EventService eventService;
-	
+
+	public void addEvent(){}
 	
 }
