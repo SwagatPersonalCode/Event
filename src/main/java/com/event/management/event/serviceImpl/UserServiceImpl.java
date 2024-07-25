@@ -15,15 +15,10 @@ import com.event.management.event.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
-	
+	@Autowired
     private UserDao userDao;
 
-	@Autowired
-	public void setUserDao(UserDao userDao) {
-		this.userDao = userDao;
-	}
-	
-	@Override
+    @Override
 	public boolean createUser(UserDto userDto) {
 		User user = initializeUserEntity(userDto);
 		User saved = userDao.save(user);
@@ -70,8 +65,6 @@ public class UserServiceImpl implements UserService {
 			 userDao.delete(user);
 			 return true;
 		}
-		 
 		return false;
 	}
-
 }

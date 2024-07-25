@@ -24,12 +24,13 @@ import com.event.management.event.service.UserService;
 public class UserController {
 
 //    private static final Logger LOGGER= LoggerFactory.getLogger(UserController.class);
-	private UserService userService;
+	@Autowired
+    private UserService userService;
 	
-    @Autowired
-	public void setUserService(UserService userService) {
-		this.userService = userService;
-	}
+//    @Autowired
+//	public void setUserService(UserService userService) {
+//        this.userService = userService;
+//	}
 	
     
     @PostMapping("/createUser")
@@ -37,13 +38,13 @@ public class UserController {
 //        LOGGER.info("UserController : createUser ");
     	if(userService.createUser(userDto))
     		return ResponseEntity.status(HttpStatus.OK).body(new CommonResponse("200","User created successfully."));
-    	
 	   return ResponseEntity.status(HttpStatus.OK).body(new CommonResponse("200","Unable to save user details"));
     }
     
     @GetMapping("/allUsers")
     public List<User> fetchAllUsers(){
-		return userService.fetchAllUsers();
+
+        return userService.fetchAllUsers();
     }
     
     @GetMapping("/fetchUserDetails")
