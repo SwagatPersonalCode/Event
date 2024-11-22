@@ -17,4 +17,6 @@ public interface UserService {
 
 	boolean deleteUser(String userId);
 
+	List<User> getSuggestionsByUserLastName(String userName);
+
 }

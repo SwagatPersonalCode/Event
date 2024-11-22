@@ -26,13 +26,9 @@ public class UserController {
 //    private static final Logger LOGGER= LoggerFactory.getLogger(UserController.class);
 	@Autowired
     private UserService userService;
+
 	
-//    @Autowired
-//	public void setUserService(UserService userService) {
-//        this.userService = userService;
-//	}
-	
-    
+//    CREATING A USER ACCOUNT
     @PostMapping("/createUser")
     public ResponseEntity<CommonResponse> createUser(@RequestBody UserDto userDto) {
 //        LOGGER.info("UserController : createUser ");
@@ -40,18 +36,21 @@ public class UserController {
     		return ResponseEntity.status(HttpStatus.OK).body(new CommonResponse("200","User created successfully."));
 	   return ResponseEntity.status(HttpStatus.OK).body(new CommonResponse("200","Unable to save user details"));
     }
-    
+
+//    GET ALL USER DETAILS
     @GetMapping("/allUsers")
     public List<User> fetchAllUsers(){
 
         return userService.fetchAllUsers();
     }
-    
+
+//    GET USER DETAILS BY ID
     @GetMapping("/fetchUserDetails")
     public User fetchUserDetails(@RequestParam(name="userId") String userId){
 		return userService.fetchUserDetailsBasedOnId(userId);	
     }
-    
+
+//    UPDATE A USER DETAILS
     @PutMapping("/updateUser")
     public ResponseEntity<CommonResponse> updateUser(@RequestBody UserDto userDto) {
     	
@@ -61,7 +60,9 @@ public class UserController {
 	   return ResponseEntity.status(HttpStatus.OK).body(new CommonResponse("200","Unable to update user details"));
     	
     }
-    
+
+
+//    DELETE A USER ACCOUNT
     @DeleteMapping("/deleteUser")
     public ResponseEntity<CommonResponse> deleteUser(@RequestParam(name="userId") String userId){
     	if(userService.deleteUser(userId))
@@ -69,5 +70,11 @@ public class UserController {
     	
 	   return ResponseEntity.status(HttpStatus.OK).body(new CommonResponse("200","Unable to delete user details"));
     }
-	
+
+
+//    GET USER BY THEIR LASTNAME
+    @GetMapping("/suggestions")
+    public List<User> getSuggestions(@RequestParam("lastName") String userName){
+        return userService.getSuggestionsByUserLastName(userName);
+    }
 }

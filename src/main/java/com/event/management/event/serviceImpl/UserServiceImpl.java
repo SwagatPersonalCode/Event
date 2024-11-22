@@ -67,4 +67,11 @@ public class UserServiceImpl implements UserService {
 		}
 		return false;
 	}
+
+	@Override
+	public List<User> getSuggestionsByUserLastName(String userName) {
+		return userDao.findByUserName(userName);
+	}
+
+
 }
